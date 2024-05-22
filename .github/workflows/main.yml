@@ -1,4 +1,5 @@
 name: CI/CD Pipeline
+# Nome do Workflow.
 
 on:
   push:
@@ -7,6 +8,7 @@ on:
   pull_request:
     branches:
       - main
+#Define quando o workflow deve ser executado.
 
 jobs:
   build:
@@ -19,7 +21,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'
+        node-version: '20'
 
     - name: Install dependencies
       run: npm install
@@ -33,5 +35,6 @@ jobs:
     - name: Deploy
       if: github.ref == 'refs/heads/main'
       run: echo "Deploying to production server..."
-      # Aqui você adicionaria comandos reais de deploy, como:
-      # run: ./deploy.sh
+
+ #Define os trabalhos que serão executados.
+
