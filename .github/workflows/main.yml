@@ -33,5 +33,3 @@ jobs:
     - name: Deploy
       if: github.ref == 'refs/heads/main'
       run: echo "Deploying to production server..."
-      # Aqui você adicionaria comandos reais de deploy, como:
-      # run: ./deploy.sh
