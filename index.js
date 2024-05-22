@@ -5,7 +5,7 @@ const express = require('express');
 const app = express();
 
 // Define a porta na qual o servidor vai escutar
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 // Define uma rota para o caminho raiz ('/') que responde com 'Hello, World!'
 app.get('/', (req, res) => {
