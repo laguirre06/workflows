@@ -1,18 +1,18 @@
-// Importa o módulo express
-const express = require('express');
+name: Hello GitHub Actions
 
-// Cria uma instância do aplicativo express
-const app = express();
+on:
+    push:
+        branches: ["*"]
 
-// Define a porta na qual o servidor vai escutar
-const PORT = process.env.PORT || 8080;
-
-// Define uma rota para o caminho raiz ('/') que responde com 'Hello, World!'
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
-});
-
-// Faz o aplicativo escutar na porta especificada
-app.listen(PORT, () => {
-  console.log(Server is running on http://localhost:${PORT});
-});
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: 16
+            - run: npm ci
+            - run: npm run test
+            - run: npm run build
+            - run: npm run deploy
