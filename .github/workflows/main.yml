@@ -1,18 +1,37 @@
-name: Hello GitHub Actions
+name: CI/CD Pipeline
 
 on:
-    push:
-        branches: ["*"]
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-            - uses: actions/setup-node@v1
-              with:
-                  node-version: 16
-            - run: npm ci
-            - run: npm run test
-            - run: npm run build
-            - run: npm run deploy
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run tests
+      run: npm test
+
+    - name: Build the application
+      run: npm run build
+
+    - name: Deploy
+      if: github.ref == 'refs/heads/main'
+      run: echo "Deploying to production server..."
+      # Aqui você adicionaria comandos reais de deploy, como:
+      # run: ./deploy.sh
