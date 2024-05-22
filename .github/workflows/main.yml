@@ -1,5 +1,5 @@
 name: CI/CD Pipeline
-
+#Nome do workflow
 on:
   push:
     branches:
@@ -7,7 +7,7 @@ on:
   pull_request:
     branches:
       - main
-
+#Define quando o workflow deve ser executado
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -33,3 +33,4 @@ jobs:
     - name: Deploy
       if: github.ref == 'refs/heads/main'
       run: echo "Deploying to production server..."
+#Define os trabalhos que serão executados 

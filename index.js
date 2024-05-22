@@ -2,7 +2,7 @@ name: Hello GitHub Actions
 
 on:
     push:
-        branches: ["**"]
+        branches: ["*"]
 
 jobs:
     build:
@@ -11,7 +11,7 @@ jobs:
             - uses: actions/checkout@v2
             - uses: actions/setup-node@v1
               with:
-                  node-version: 16
+                  node-version: 20
             - run: npm ci
             - run: npm run test
             - run: npm run build
